@@ -8,6 +8,7 @@ class Carousel {
     this.carouselContainer = container;
     this.carouselControls = controls;
     this.carouselArray = [...items];
+    this.updateGallery();
   }
 
   // Update css classes for gallery
