@@ -12,9 +12,11 @@ $(document).ready(function () {
             })
 
             .fail(function (error) {
-                alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error));
+                $(".feed").append("<div></div>");
+                $(".feed div").text("Une Erreur s'est produite");
             })
     }
+
     function addArticle(response) {
         for (element of response) {
             if (element.id < 9) {
@@ -28,6 +30,7 @@ $(document).ready(function () {
             }
         }
     };
+
     function choosefetch() {
 
         fetch("https://api.punkapi.com/v2/beers")
@@ -39,8 +42,15 @@ $(document).ready(function () {
                 newArticle
             )
 
-            .catch(error => alert("Erreur :" + error))
+            .catch(data => {
+                let div = document.createElement("div");
+                document.getElementById("feed").append(div);
+                div.innerHTML = "Une erreur s'est produite";
+            }
+
+            )
     }
+
     function newArticle(data) {
         for (element of data) {
             if (element.id < 9) {
@@ -66,7 +76,41 @@ $(document).ready(function () {
         }
     }
 
-    choosefetch();
+    let button = document.createElement("input");
+    document.getElementById("refresh").append(button);
+    button.className = "icon";
+    button.setAttribute('type', 'button');
+    button.setAttribute('value', 'Refresh');
+    button.onclick = chooseajax;
+
+
+
+
+
+    $.ajax({
+        url: "https://zoo-animal-api.herokuapp.com/animals/rand/6",
+        method: "GET",
+        dataType: "json",
+    })
+
+        .done(function (response) {
+            carouselImg(response)
+        })
+
+        .fail(function (error) {
+            $(".feed").append("<div></div>");
+            $(".feed div").text("Oups");
+        })
+
+
+
+    function carouselImg(animals) {
+
+        for (let i = 0; i < animals.length; i++) {
+            console.log(animals[i].image_link);
+            $("#img"+i).attr("src", animals[i].image_link)
+        }
+    }
 
 
 

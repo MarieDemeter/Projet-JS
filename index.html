@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projet JS</title>
 <link rel="stylesheet" href="styles/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="scripts/script.js"></script>
-<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+<link rel="stylesheet" href="styles/carousel.css" />
 </head>
 
 <body class="container">
@@ -22,13 +20,32 @@
 
     <!--MAIN-->
     <main>
+        <div id="refresh"></div>
         <div class="feed" id="feed"></div>
+    
+
+    <div class="gallery">
+        <div class="gallery-container">
+          <img class="gallery-item" id="img1">
+          <img class="gallery-item" id="img2">
+          <img class="gallery-item" id="img3">
+          <img class="gallery-item" id="img4">
+          <img class="gallery-item" id="img5">
+        </div>
+        <div class="gallery-controls"></div>
+      </div>
+
     </main>
 
     <!--FOOTER-->
     <footer class="footer">
         <p>CopyRight 2022</p>
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <script src="scripts/carousel.js"></script>
 </body>
 
 </html>

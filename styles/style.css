@@ -50,7 +50,12 @@ h1{
     background-color: rgb(180, 180, 174);
     margin: 15px;
     padding: 3%;
+}
 
+.icon{
+    height: 50px;
+    align-items: center;
+    margin: 15px;
 }
 
 
