@@ -1,6 +1,5 @@
 /* SMALL */
 .container{
-    background-color: rgb(209, 209, 209);
     margin: 0;
     padding: 0;
 }
@@ -49,9 +48,7 @@ h1{
 
 .article{
     background-color: rgb(180, 180, 174);
-    margin-top: 15px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin: 15px;
     padding: 3%;
 
 }
@@ -59,9 +56,7 @@ h1{
 
 /* MEDIUM */
 @media screen and (min-width : 576px){
-    .container{
-        background-color: rgb(47, 75, 66);
-    }
+
  
     
 
@@ -70,9 +65,7 @@ h1{
 
 /* LARGE */
 @media screen and (min-width : 768px){
-    .container{
-        background-color: rgb(48, 29, 29);
-    }
+
 
 
 
