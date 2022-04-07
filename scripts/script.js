@@ -157,20 +157,20 @@ $(document).ready(function () {
             }
         }
     }
-    
-    function newArticle() {
-        let newArticle = document.forms['addArticle'][0]['value'];
-        let test = document.createElement("div");
-        test.className = "article";
-        document.getElementById("feed").append(test);
-        test.innerHTML = newArticle;
-        console.log(document.forms);
-        console.log(document.forms['addArticle'][0]['value'])
+
+    function createNewArticle() {
+        const dataForm = [{
+            id: 1,
+            name: document.getElementById("titre"),
+            description: document.getElementById("description"),
+            image_url : document.getElementById("image"),
+        }];
+        fetchAddArticle(dataForm);
     }
 
-    let formSubmit=document.getElementById("submit");
-    console.log(formSubmit)
-    formSubmit.onclick = newArticle;
+    document.getElementById("submit").onclick = createNewArticle;
+
+
 
 
 
