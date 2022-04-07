@@ -31,6 +31,24 @@
             </div>
             <div class="gallery-controls"></div>
         </div>
+        
+        <form action="index.html" method="post" class="form" id="addArticle">
+            <h3>Ajouter une bière ici :</h3>
+            <div id="titre">
+                <input type="text" name="titre" id="titre">
+                <label for="titre">Titre de l'article</label>
+            </div>
+            <div id="description">
+                <input type="text" name="description">
+                <label for="description">Description de l'article</label>
+            </div>
+            <div id="image">
+                <input type="text" name="image">
+                <label for="image">URL de l'image de l'article</label>
+            </div>
+            <input type="button" id="submit">
+        </form>
+
 
         <div id="refresh"></div>
         <div class="feed" id="feed"></div>
@@ -44,7 +62,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="scripts/script.js"></script>
-    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
     <script src="scripts/carousel.js"></script>
 </body>
 

@@ -44,7 +44,7 @@ $(document).ready(function () {
             )
 
             .then(
-                newArticle
+                fetchAddArticle
             )
 
             .catch(data => {
@@ -55,7 +55,7 @@ $(document).ready(function () {
     }
 
     // Fonction pour ajouter un nouvel article en VANILLA (appelée dans le deuxième then)
-    function newArticle(data) {
+    function fetchAddArticle(data) {
         for (element of data) {
             if (element.id < 9) {
                 let div = document.createElement("div");
@@ -86,7 +86,7 @@ $(document).ready(function () {
     button.className = "icon";
     button.setAttribute('type', 'button');
     button.setAttribute('value', 'Refresh');
-    button.onclick = chooseajax;
+    button.onclick = choosefetch;
 
 
 
@@ -115,28 +115,28 @@ $(document).ready(function () {
 
 
     // Création menu déroulant
-    button = document.createElement("button");
+    let menuButton = document.createElement("button");
     let div = document.createElement("div");
 
-    button.className = "dropbtn";
-    button.innerHTML = 'Mon super menu';
-    document.getElementById("dropdown").append(button);
+    menuButton.className = "dropbtn";
+    menuButton.innerHTML = 'Mon super menu';
+    document.getElementById("dropdown").append(menuButton);
 
     div.setAttribute('id', 'myDropdown');
     div.className = 'dropdown-content';
     document.getElementById("dropdown").append(div);
 
-    let lien = ["https://zoo-animal-api.herokuapp.com/animals/rand/6", "https://zoo-animal-api.herokuapp.com/animals/rand/1", "https://zoo-animal-api.herokuapp.com/animals/rand/2"]
+    let liens = ["https://zoo-animal-api.herokuapp.com/animals/rand/6", "https://zoo-animal-api.herokuapp.com/animals/rand/1", "https://zoo-animal-api.herokuapp.com/animals/rand/2"]
 
-    for (let i = 0; i < lien.length; i++) {
+    for (let i = 0; i < liens.length; i++) {
         let a = document.createElement("a");
         a.setAttribute('id', 'lien' + i);
-        a.setAttribute('href', lien[i]);
+        a.setAttribute('href', liens[i]);
         a.innerHTML = 'Lien' + i;
         document.getElementById("myDropdown").append(a);
     }
 
-    button.onclick = printMenuElements;
+    menuButton.onclick = printMenuElements;
 
 
     // Création fonction printMenuElements qui 
@@ -147,24 +147,30 @@ $(document).ready(function () {
     // Ferme le menu déroulant si on clique à coté du menu
     window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
+            let dropdowns = document.getElementsByClassName("dropdown-content");
+            for (let i = 0; i < dropdowns.length; i++) {
+                let openDropdown = dropdowns[i];
+                // openDropdown.classList.toggle('visible');
                 if (openDropdown.classList.contains('visible')) {
                     openDropdown.classList.remove('visible');
                 }
             }
         }
     }
+    
+    function newArticle() {
+        let newArticle = document.forms['addArticle'][0]['value'];
+        let test = document.createElement("div");
+        test.className = "article";
+        document.getElementById("feed").append(test);
+        test.innerHTML = newArticle;
+        console.log(document.forms);
+        console.log(document.forms['addArticle'][0]['value'])
+    }
 
-
-
-
-
-
-
-
+    let formSubmit=document.getElementById("submit");
+    console.log(formSubmit)
+    formSubmit.onclick = newArticle;
 
 
 
