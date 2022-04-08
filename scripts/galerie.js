@@ -23,20 +23,32 @@ for (let i = 0; i < liens.length; i++) {
 menuButton.onclick = printMenuElements;
 
 // Affichage et création de la galerie
+const liensImgGalerie = ["https://images.pexels.com/photos/5055188/pexels-photo-5055188.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5055189/pexels-photo-5055189.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5054687/pexels-photo-5054687.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5054688/pexels-photo-5054688.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5054686/pexels-photo-5054686.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5055187/pexels-photo-5055187.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5055179/pexels-photo-5055179.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5055182/pexels-photo-5055182.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5054690/pexels-photo-5054690.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"];
 
-
-
-
-const imgGalerie = ["https://images.pexels.com/photos/5055187/pexels-photo-5055187.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5055179/pexels-photo-5055179.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5055182/pexels-photo-5055182.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5054690/pexels-photo-5054690.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5055188/pexels-photo-5055188.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5055189/pexels-photo-5055189.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5054687/pexels-photo-5054687.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5054688/pexels-photo-5054688.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", "https://images.pexels.com/photos/5054686/pexels-photo-5054686.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"];
-
-for (let i = 0; i < imgGalerie.length; i++) {
+for (let i = 0; i < liensImgGalerie.length; i++) {
     let galerie = document.querySelector("#galerie");
     let img = document.createElement("img");
-    img.src=imgGalerie[i];
+    img.className = "imgGalerie";
+    img.setAttribute("id", "img" + i);
+    img.src = liensImgGalerie[i];
     galerie.append(img);
-
 }
 
+const imagesGalerie = document.querySelectorAll(".imgGalerie");
+console.log(imagesGalerie)
+for (let i = 0; i < imagesGalerie.length; i++) {
+    imagesGalerie[i].addEventListener("click", showBigImg);
+}
+function showBigImg(event) {
+    const imagesGalerie = document.querySelector(".show");
+    let idClique = event.target.id;
+    let imgAAfficher = document.getElementById(idClique);
+    console.log(imgAAfficher)
+    imgAAfficher.classList.toggle("show");
+    if(imagesGalerie || imagesGalerie==imgAAfficher){
+    imagesGalerie.classList.remove("show");
+    }
+}
 
 
 
