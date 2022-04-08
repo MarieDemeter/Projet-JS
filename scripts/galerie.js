@@ -35,7 +35,6 @@ for (let i = 0; i < liensImgGalerie.length; i++) {
 }
 
 const imagesGalerie = document.querySelectorAll(".imgGalerie");
-console.log(imagesGalerie)
 for (let i = 0; i < imagesGalerie.length; i++) {
     imagesGalerie[i].addEventListener("click", showBigImg);
 }
@@ -43,17 +42,18 @@ function showBigImg(event) {
     const imagesGalerie = document.querySelector(".show");
     let idClique = event.target.id;
     let imgAAfficher = document.getElementById(idClique);
-    console.log(imgAAfficher)
     imgAAfficher.classList.toggle("show");
     if(imagesGalerie || imagesGalerie==imgAAfficher){
     imagesGalerie.classList.remove("show");
     }
 }
 
-
-
-
-
+//Création du bouton changeView
+let button = document.createElement("input");
+document.getElementById("changeView").append(button);
+button.setAttribute('type', 'button');
+button.setAttribute('value', 'Changer la vue de la galerie');
+button.onclick = changeView;
 
 // Ferme le menu déroulant si on clique à coté du menu
 window.onclick = function (event) {
@@ -75,3 +75,9 @@ function printMenuElements() {
 }
 
 
+// Fonction changement de vue galerie
+function changeView(){
+    const galerie = document.querySelector(".galerie");
+    galerie.classList.toggle("changeView")
+
+}

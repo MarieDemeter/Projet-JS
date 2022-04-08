@@ -127,6 +127,15 @@ h1{
   width: 50%;
 }
 
+.changeView{
+  flex-direction: column;
+  align-items: center;
+}
+
+.changeView img{
+  width: 30%;
+}
+
 /* MEDIUM */
 @media screen and (min-width : 576px){
 
