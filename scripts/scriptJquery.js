@@ -19,10 +19,7 @@ $(document).ready(function () {
             carouselImg(response)
         })
 
-        .fail(function (error) {
-            $(".feed").append("<div></div>");
-            $(".feed div").text("Oups");
-        })
+        .fail(error)
 
     // Création menu déroulant
     let menuButton = document.createElement("button");
@@ -47,6 +44,7 @@ $(document).ready(function () {
     }
 
     menuButton.onclick = printMenuElements;
+    document.getElementById("submit").onclick = createNewArticle;
 
     // Ferme le menu déroulant si on clique à coté du menu
     window.onclick = function (event) {
@@ -75,14 +73,11 @@ $(document).ready(function () {
                 addArticle(response)
             })
             // Fonction à executer en cas d'echec de chargement de l'API
-            .fail(function (error) {
-                $(".feed").append("<div></div>");
-                $(".feed div").text("Une Erreur s'est produite");
-            })
+            .fail(error)
     }
     // Fonction pour ajouter un nouvel article en Jquery (appelée dans le done)
-    function addArticle(response) {
-        for (element of response) {
+    function addArticle(biers) {
+        for (element of biers) {
             if (element.id < 9) {
                 $(".feed").append("<div id='" + element.id + "'></div>");
                 $("#" + element.id).append("<h2></h2>").append("<p></p>").append("<img>").addClass('article');
@@ -109,22 +104,21 @@ $(document).ready(function () {
         document.getElementById("myDropdown").classList.toggle("visible");
     }
 
-
-
+    // CreateNewArticle création d'un nouvel article par le formulaire
     function createNewArticle() {
         const dataForm = [{
-            id: 1,
-            name: document.getElementById("titre"),
-            description: document.getElementById("description"),
-            image_url: document.getElementById("image"),
+            id: 0,
+            name: document.querySelector("#titre").value,
+            description: document.querySelector("#description").value,
+            image_url: document.querySelector("#image").value,
         }];
-        fetchAddArticle(dataForm);
+        addArticle(dataForm);
     }
 
-    document.getElementById("submit").onclick = createNewArticle;
-
-
-
+    function error() {
+        $(".feed").append("<div></div>");
+        $(".feed div").text("Oups");
+    }
 
 
 

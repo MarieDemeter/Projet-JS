@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projet JS</title>
+<title>Projet JQuery</title>
 <link rel="stylesheet" href="styles/carousel.css" />
 <link rel="stylesheet" href="styles/style.css">
 </head>
@@ -32,22 +32,22 @@
             <div class="gallery-controls"></div>
         </div>
         
-        <form action="index.html" method="post" class="form" id="addArticle">
+        <div class="form" id="addArticle">
             <h3>Ajouter une bière ici :</h3>
-            <div id="titre">
-                <input type="text" name="titre" id="titre">
-                <label for="titre">Titre de l'article</label>
+            <div>
+                <input type="text" id="titre">
+                <label>Titre de l'article</labelfor=>
             </div>
-            <div id="description">
-                <input type="text" name="description" id="description">
-                <label for="description">Description de l'article</label>
+            <div>
+                <input type="text" id="description">
+                <label>Description de l'article</label=>
             </div>
-            <div id="image">
-                <input type="text" name="image" id="image">
-                <label for="image">URL de l'image de l'article</label>
+            <div>
+                <input type="text" id="image">
+                <label>URL de l'image de l'article</label>
             </div>
-            <input type="button" id="submit" value="Ajouter la bière">
-        </form>
+            <button type="button" id="submit">Ajouter la bière</button>
+        </div>
 
 
         <div id="refresh"></div>

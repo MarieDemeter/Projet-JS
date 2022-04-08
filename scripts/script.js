@@ -5,29 +5,22 @@ button.className = "icon";
 button.setAttribute('type', 'button');
 button.setAttribute('value', 'Refresh');
 button.onclick = choosefetch;
-carrou;
-function carrou() {
+
 
 fetch("https://zoo-animal-api.herokuapp.com/animals/rand/6")
-.then(
-    response => response.json()
-)
+    .then(
+        response => response.json()
+    ).then(
+        carouselImg
+    ).catch(
+        error
+    )
 
-.then(
-    carouselImg
-)
-
-.catch(data => {
-    let div = document.createElement("div");
-    document.getElementById("feed").append(div);
-    div.innerHTML = "Une erreur s'est produite";
-})
-}
 
 // Fonction pour ajouter chaque image au carousel
 function carouselImg(animals) {
-    for (let i = 0; i < animals.length; i++) {
-        document.getElementById("img"+i).setAttribute('src',animals[i].image_link);
+    for (let i = 1; i < animals.length; i++) {
+        document.getElementById("img" + i).setAttribute('src', animals[i].image_link);
     }
 }
 
@@ -54,9 +47,8 @@ for (let i = 0; i < liens.length; i++) {
 }
 
 menuButton.onclick = printMenuElements;
-
-
 document.getElementById("submit").onclick = createNewArticle;
+
 
 
 // Ferme le menu déroulant si on clique à coté du menu
@@ -87,16 +79,14 @@ function choosefetch() {
             fetchAddArticle
         )
 
-        .catch(data => {
-            let div = document.createElement("div");
-            document.getElementById("feed").append(div);
-            div.innerHTML = "Une erreur s'est produite";
-        })
+        .catch(
+            error
+        )
 }
 
 // Fonction pour ajouter un nouvel article en VANILLA (appelée dans le deuxième then)
-function fetchAddArticle(data) {
-    for (element of data) {
+function fetchAddArticle(biers) {
+    for (element of biers) {
         if (element.id < 9) {
             let div = document.createElement("div");
             div.className = "article";
@@ -110,29 +100,32 @@ function fetchAddArticle(data) {
             img.src = element.image_url;
             img.style.height = '200px';
 
+            div.append(title, description, img);
             document.getElementById("feed").append(div);
-            document.getElementById("article" + element.id).append(title);
-            document.getElementById("article" + element.id).append(description);
-            document.getElementById("article" + element.id).append(img);
         } else {
             break;
         }
     }
 }
 
-// Création fonction printMenuElements qui 
+// Création fonction printMenuElements qui affiche les éléments du menu déroulant
 function printMenuElements() {
     document.getElementById("myDropdown").classList.toggle("visible");
 }
 
+// CreateNewArticle création d'un nouvel article par le formulaire
 function createNewArticle() {
     const dataForm = [{
-        id: 1,
-        name: document.getElementById("titre"),
-        description: document.getElementById("description"),
-        image_url: document.getElementById("image"),
+        id: 0,
+        name: document.querySelector("#titre").value,
+        description: document.querySelector("#description").value,
+        image_url: document.querySelector("#image").value,
     }];
     fetchAddArticle(dataForm);
 }
 
-
+function error() {
+    let div = document.createElement("div");
+    document.getElementById("feed").append(div);
+    div.innerHTML = "Une erreur s'est produite";
+}
