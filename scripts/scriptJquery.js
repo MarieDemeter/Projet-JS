@@ -33,13 +33,13 @@ $(document).ready(function () {
     div.className = 'dropdown-content';
     document.getElementById("dropdown").append(div);
 
-    let liens = ["https://zoo-animal-api.herokuapp.com/animals/rand/6", "https://zoo-animal-api.herokuapp.com/animals/rand/1", "https://zoo-animal-api.herokuapp.com/animals/rand/2"]
+    let liens = ["index.html", "indexJquery.html", "galerie.html"]
 
     for (let i = 0; i < liens.length; i++) {
         let a = document.createElement("a");
         a.setAttribute('id', 'lien' + i);
         a.setAttribute('href', liens[i]);
-        a.innerHTML = 'Lien' + i;
+        a.innerHTML = liens[i];
         document.getElementById("myDropdown").append(a);
     }
 

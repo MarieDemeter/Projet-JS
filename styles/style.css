@@ -109,6 +109,21 @@ h1{
     margin: 30px;
 }
 
+.galerie{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 15px;
+}
+.galerie img{
+  margin: 15px;
+  opacity: 80%;
+}
+.galerie img:hover{
+  opacity: 100%;
+}
+
+
 
 /* MEDIUM */
 @media screen and (min-width : 576px){

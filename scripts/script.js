@@ -36,13 +36,13 @@ div.setAttribute('id', 'myDropdown');
 div.className = 'dropdown-content';
 document.getElementById("dropdown").append(div);
 
-let liens = ["https://zoo-animal-api.herokuapp.com/animals/rand/6", "https://zoo-animal-api.herokuapp.com/animals/rand/1", "https://zoo-animal-api.herokuapp.com/animals/rand/2"]
+let liens = ["index.html", "indexJquery.html", "galerie.html"]
 
 for (let i = 0; i < liens.length; i++) {
     let a = document.createElement("a");
     a.setAttribute('id', 'lien' + i);
     a.setAttribute('href', liens[i]);
-    a.innerHTML = 'Lien' + i;
+    a.innerHTML = liens[i];
     document.getElementById("myDropdown").append(a);
 }
 
@@ -76,7 +76,7 @@ function choosefetch() {
         )
 
         .then(
-            fetchAddArticle
+            AddArticle
         )
 
         .catch(
@@ -85,7 +85,7 @@ function choosefetch() {
 }
 
 // Fonction pour ajouter un nouvel article en VANILLA (appelée dans le deuxième then)
-function fetchAddArticle(biers) {
+function AddArticle(biers) {
     for (element of biers) {
         if (element.id < 9) {
             let div = document.createElement("div");
@@ -121,7 +121,8 @@ function createNewArticle() {
         description: document.querySelector("#description").value,
         image_url: document.querySelector("#image").value,
     }];
-    fetchAddArticle(dataForm);
+    AddArticle(dataForm);
+    //document.getElementById("form").reset();
 }
 
 function error() {
