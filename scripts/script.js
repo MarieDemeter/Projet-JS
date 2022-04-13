@@ -16,14 +16,6 @@ fetch("https://zoo-animal-api.herokuapp.com/animals/rand/6")
         error
     )
 
-
-// Fonction pour ajouter chaque image au carousel
-function carouselImg(animals) {
-    for (let i = 1; i < animals.length; i++) {
-        document.getElementById("img" + i).setAttribute('src', animals[i].image_link);
-    }
-}
-
 // Création menu déroulant
 let menuButton = document.createElement("button");
 let div = document.createElement("div");
@@ -36,7 +28,7 @@ div.setAttribute('id', 'myDropdown');
 div.className = 'dropdown-content';
 document.getElementById("dropdown").append(div);
 
-let liens = ["index.html", "indexJquery.html", "galerie.html"]
+let liens = ["index.html", "indexJquery.html", "galerie.html", "memory.html"]
 
 for (let i = 0; i < liens.length; i++) {
     let a = document.createElement("a");
@@ -65,20 +57,22 @@ window.onclick = function (event) {
     }
 }
 
-
+// Fonction pour ajouter chaque image au carousel
+function carouselImg(animals) {
+    for (let i = 1; i < animals.length; i++) {
+        document.getElementById("img" + i).setAttribute('src', animals[i].image_link);
+    }
+}
 
 // En VANILLA utilisation de la fonction fetch pour récupérer les données d'une API (bière ici)
 function choosefetch() {
-
     fetch("https://api.punkapi.com/v2/beers")
         .then(
             response => response.json()
         )
-
         .then(
             AddArticle
         )
-
         .catch(
             error
         )
@@ -115,13 +109,21 @@ function printMenuElements() {
 
 // CreateNewArticle création d'un nouvel article par le formulaire
 function createNewArticle() {
-    const dataForm = [{
-        id: 0,
-        name: document.querySelector("#titre").value,
-        description: document.querySelector("#description").value,
-        image_url: document.querySelector("#image").value,
-    }];
-    AddArticle(dataForm);
+    const name = document.querySelector("#titre").value;
+    const description = document.querySelector("#description").value;
+    const image_url = document.querySelector("#image").value;
+
+    if (name && description && image_url) {
+        const dataForm = [{
+            id: 0,
+            name: document.querySelector("#titre").value,
+            description: document.querySelector("#description").value,
+            image_url: document.querySelector("#image").value,
+        }];
+        AddArticle(dataForm);
+    } else {
+        alert("Veuillez remplir tous les champs du formulaire !");
+    }
     //document.getElementById("form").reset();
 }
 
@@ -130,3 +132,4 @@ function error() {
     document.getElementById("feed").append(div);
     div.innerHTML = "Une erreur s'est produite";
 }
+

@@ -12,7 +12,7 @@ div.setAttribute('id', 'myDropdown');
 div.className = 'dropdown-content';
 document.getElementById("dropdown").append(div);
 
-let liens = ["index.html", "indexJquery.html", "galerie.html"]
+let liens = ["index.html", "indexJquery.html", "galerie.html", "memory.html"]
 
 for (let i = 0; i < liens.length; i++) {
     let a = document.createElement("a");
@@ -23,7 +23,13 @@ for (let i = 0; i < liens.length; i++) {
 
 menuButton.onclick = printMenuElements;
 
+for (let i = 0; i < liensImgGalerie.length; i++) {
+    printGallery(liensImgGalerie, i)
+}
 
+
+
+//Affiche les photos de la galerie en plus gros si on clique dessus
 function showBigImg(event) {
     const imagesGalerie = document.querySelector(".show");
     let idClique = event.target.id;
@@ -47,9 +53,6 @@ buttonFormImage.setAttribute('type', 'button');
 buttonFormImage.setAttribute('value', 'Formulaire ajout d\'une image à la galerie');
 document.getElementById("addImage").append(buttonFormImage);
 buttonFormImage.onclick = printFormAddImage;
-
-
-
 
 
 // Ferme le menu déroulant si on clique à coté du menu
@@ -96,31 +99,32 @@ function printFormAddImage() {
     buttonAddImage.onclick = addImage;
 }
 
-//Fonction printFormAddImage
+//Fonction AddImage
 function addImage() {
     const newURL = document.getElementById("URL").value;
-    console.log(newURL)
     liensImgGalerie.push(newURL);
-    printGallery(liensImgGalerie)
+    const i = liensImgGalerie.length-1;
+    printGallery(liensImgGalerie, i);
 }
 
 // Fonction affichage et création de la galerie
-function printGallery(liensImgGalerie) {
-    for (let i = 0; i < liensImgGalerie.length; i++) {
-        let galerie = document.querySelector("#galerie");
-        let img = document.createElement("img");
-        img.className = "imgGalerie";
-        img.setAttribute("id", "img" + i);
-        img.src = liensImgGalerie[i];
-
-
-        galerie.append(img);
-
-        const imagesGalerie = document.querySelectorAll(".imgGalerie");
-        for (let i = 0; i < imagesGalerie.length; i++) {
-            imagesGalerie[i].addEventListener("click", showBigImg);
-        }
+function printGallery(liensImgGalerie, i) {
+    let galerie = document.querySelector("#galerie");
+    let img = document.createElement("img");
+    img.className = "imgGalerie";
+    img.setAttribute("id", "img" + i);
+    img.src = liensImgGalerie[i];
+    galerie.append(img);
+    const imagesGalerie = document.querySelectorAll(".imgGalerie");
+    for (let j = 0; j < imagesGalerie.length; j++) {
+        imagesGalerie[j].addEventListener("click", showBigImg);
+        imagesGalerie[j].addEventListener("dblclick", deleteImg);
     }
 }
 
-printGallery(liensImgGalerie)
+// Fonction suppression image galerie
+function deleteImg(event){
+    let idClique = event.target.id;
+    let imgAAfficher = document.getElementById(idClique);
+    imgAAfficher.remove();
+}

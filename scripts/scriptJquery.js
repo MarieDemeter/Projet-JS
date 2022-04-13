@@ -33,7 +33,7 @@ $(document).ready(function () {
     div.className = 'dropdown-content';
     document.getElementById("dropdown").append(div);
 
-    let liens = ["index.html", "indexJquery.html", "galerie.html"]
+    let liens = ["index.html", "indexJquery.html", "galerie.html", "memory.html"]
 
     for (let i = 0; i < liens.length; i++) {
         let a = document.createElement("a");
